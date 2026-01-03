@@ -9,7 +9,6 @@ export default function Button() {
       backgroundImage: `radial-gradient(circle at 0.5px 0.5px, rgba(6,182,212,0.2) 1px, transparent 0)`,
       backgroundSize: "8px 8px",
       backgroundRepeat: "repeat",
-      
     }}
     >
       <motion.button
