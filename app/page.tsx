@@ -1,5 +1,6 @@
 "use client";
 
+import AnimatedSalesCard from "@/components/AnimatedSalesCard";
 import { AnimatedText } from "@/components/AnimatedText";
 import Card from "@/components/Card";
 import CardsGrow from "@/components/CardsGrow";
@@ -9,7 +10,6 @@ import Preloader from "@/components/Preloader";
 import SequenceBtn from "@/components/SequenceBtn";
 
 const Home = () => {
-  console.log("home");
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       {/* <Card /> */}
@@ -19,7 +19,8 @@ const Home = () => {
       {/* // <AnimatedText /> */}
       {/* <Preloader /> */}
       {/* hi there */}
-      <EarnWave />
+      {/* <EarnWave /> */}
+      <AnimatedSalesCard />
     </div>
   );
 }
