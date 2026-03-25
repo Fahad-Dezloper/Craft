@@ -4,6 +4,7 @@ import AnimatedSalesCard from "@/components/AnimatedSalesCard";
 import { AnimatedText } from "@/components/AnimatedText";
 import Card from "@/components/Card";
 import CardsGrow from "@/components/CardsGrow";
+import ClockAnimation from "@/components/ClockAnimation";
 import DynamicIsland from "@/components/DynamicIsland";
 import EarnWave from "@/components/EarnWave";
 import FamilyDrawer from "@/components/FamilyDrawer";
@@ -30,7 +31,8 @@ const Home = () => {
       {/* <FamilyDrawer /> */}
       {/* <DynamicIsland /> */}
       {/* <TopBar /> */}
-      <HandGesture />
+      {/* <HandGesture /> */}
+      <ClockAnimation />
     </div>
   );
 }
