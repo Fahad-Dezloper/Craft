@@ -4,10 +4,14 @@ import AnimatedSalesCard from "@/components/AnimatedSalesCard";
 import { AnimatedText } from "@/components/AnimatedText";
 import Card from "@/components/Card";
 import CardsGrow from "@/components/CardsGrow";
+import DynamicIsland from "@/components/DynamicIsland";
 import EarnWave from "@/components/EarnWave";
+import FamilyDrawer from "@/components/FamilyDrawer";
 import FeatureSection from "@/components/FeatureSection";
 import Preloader from "@/components/Preloader";
 import SequenceBtn from "@/components/SequenceBtn";
+import ShowcaseCard from "@/components/ShowcaseCard";
+import TopBar from "@/components/TopBar";
 
 const Home = () => {
   return (
@@ -20,7 +24,11 @@ const Home = () => {
       {/* <Preloader /> */}
       {/* hi there */}
       {/* <EarnWave /> */}
-      <AnimatedSalesCard />
+      {/* <AnimatedSalesCard /> */}
+      {/* <ShowcaseCard /> */}
+      {/* <FamilyDrawer /> */}
+      {/* <DynamicIsland /> */}
+      <TopBar />
     </div>
   );
 }
