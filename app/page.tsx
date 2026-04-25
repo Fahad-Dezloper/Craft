@@ -13,6 +13,7 @@ import HandGesture from "@/components/HandGesture";
 import Preloader from "@/components/Preloader";
 import SequenceBtn from "@/components/SequenceBtn";
 import ShowcaseCard from "@/components/ShowcaseCard";
+import TextMorph from "@/components/TextMorph";
 import TopBar from "@/components/TopBar";
 
 const Home = () => {
@@ -32,7 +33,8 @@ const Home = () => {
       {/* <DynamicIsland /> */}
       {/* <TopBar /> */}
       {/* <HandGesture /> */}
-      <ClockAnimation />
+      {/* <ClockAnimation /> */}
+      <TextMorph />
     </div>
   );
 }
