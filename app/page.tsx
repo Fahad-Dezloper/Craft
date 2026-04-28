@@ -13,6 +13,7 @@ import FeedbackComponentCSS from "@/components/FeedbackModal";
 import FeedbackModal from "@/components/FeedbackModal";
 import HandGesture from "@/components/HandGesture";
 import StyledWithoutDrag from "@/components/LayIdTest";
+import MultiStepComponent from "@/components/MultiStepModal";
 import Preloader from "@/components/Preloader";
 import SequenceBtn from "@/components/SequenceBtn";
 import ShowcaseCard from "@/components/ShowcaseCard";
@@ -39,7 +40,8 @@ const Home = () => {
       {/* <ClockAnimation /> */}
       {/* <TextMorph /> */}
       {/* <StyledWithoutDrag /> */}
-      <FeedbackComponentCSS />
+      {/* <FeedbackComponentCSS /> */}
+      <MultiStepComponent />
     </div>
   );
 }
