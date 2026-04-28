@@ -1,10 +1,21 @@
 "use client";
 
-import { motion, useMotionValue, useMotionTemplate } from "motion/react";
-
+import { motion, useMotionValue, useMotionTemplate, useSpring } from "motion/react";
+import { useRef, useState } from "react";
+const SPRING = {
+    damping: 18,
+  };
+  const SLOW_SPRING = {
+    damping: 40,
+  };
 export default function Graph() {
-    const clipPathValue = useMotionValue(0);
-    const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathValue}% 0px 0px)`
+    const [isHovering, setIsHovering] = useState(false);
+    const timeoutRef = useRef<null | any>(null);
+    const clipPathSpring = useSpring(
+      0,
+      isHovering ? SPRING : SLOW_SPRING,
+    );
+    const clipPathTemplate = useMotionTemplate`inset(0px ${clipPathSpring}% 0px 0px)`;
     function onPointerMove(e: { currentTarget: { getBoundingClientRect: () => any; }; clientX: number; }) {
         const rect = e.currentTarget.getBoundingClientRect();
         const distanceFromRight = Math.max(rect.right - e.clientX, 0);
@@ -12,10 +23,25 @@ export default function Graph() {
             (distanceFromRight / rect.width) * 100,
             100,
         );
-        clipPathValue.set(percentageFromRight);
+        clipPathSpring.set(percentageFromRight);
     }
   return (
-    <div className="w-full" onPointerMove={onPointerMove}>
+    <div
+    className="w-full"
+    onPointerMove={onPointerMove}
+    onPointerEnter={() => {
+      setIsHovering(true);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    }}
+    onPointerLeave={() => {
+      setIsHovering(false);
+      timeoutRef.current = setTimeout(() => {
+        clipPathSpring.set(0);
+      }, 1000);
+    }}
+  >
       <motion.svg 
       xmlns="http://www.w3.org/2000/svg" 
       fill="none" 
