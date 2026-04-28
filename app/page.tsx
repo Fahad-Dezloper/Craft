@@ -11,6 +11,7 @@ import FamilyDrawer from "@/components/FamilyDrawer";
 import FeatureSection from "@/components/FeatureSection";
 import FeedbackComponentCSS from "@/components/FeedbackModal";
 import FeedbackModal from "@/components/FeedbackModal";
+import Graph from "@/components/GraphAnimation";
 import HandGesture from "@/components/HandGesture";
 import StyledWithoutDrag from "@/components/LayIdTest";
 import MultiStepComponent from "@/components/MultiStepModal";
@@ -19,6 +20,7 @@ import SequenceBtn from "@/components/SequenceBtn";
 import ShowcaseCard from "@/components/ShowcaseCard";
 import TextMorph from "@/components/TextMorph";
 import TopBar from "@/components/TopBar";
+import { TrashAnimation } from "@/components/trash-animation";
 
 const Home = () => {
   return (
@@ -41,7 +43,9 @@ const Home = () => {
       {/* <TextMorph /> */}
       {/* <StyledWithoutDrag /> */}
       {/* <FeedbackComponentCSS /> */}
-      <MultiStepComponent />
+      {/* <MultiStepComponent /> */}
+      {/* <TrashAnimation /> */}
+      <Graph />
     </div>
   );
 }
