@@ -300,3 +300,7 @@ body {
       animation: none !important;
     }
   }
+
+  [data-feedback=true] {
+    opacity: 0 !important;
+  }

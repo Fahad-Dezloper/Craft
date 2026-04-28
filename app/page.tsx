@@ -9,6 +9,8 @@ import DynamicIsland from "@/components/DynamicIsland";
 import EarnWave from "@/components/EarnWave";
 import FamilyDrawer from "@/components/FamilyDrawer";
 import FeatureSection from "@/components/FeatureSection";
+import FeedbackComponentCSS from "@/components/FeedbackModal";
+import FeedbackModal from "@/components/FeedbackModal";
 import HandGesture from "@/components/HandGesture";
 import StyledWithoutDrag from "@/components/LayIdTest";
 import Preloader from "@/components/Preloader";
@@ -36,8 +38,8 @@ const Home = () => {
       {/* <HandGesture /> */}
       {/* <ClockAnimation /> */}
       {/* <TextMorph /> */}
-      <StyledWithoutDrag />
-      
+      {/* <StyledWithoutDrag /> */}
+      <FeedbackComponentCSS />
     </div>
   );
 }
