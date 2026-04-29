@@ -15,6 +15,7 @@ import Graph from "@/components/GraphAnimation";
 import HandGesture from "@/components/HandGesture";
 import StyledWithoutDrag from "@/components/LayIdTest";
 import MultiStepComponent from "@/components/MultiStepModal";
+import PacoWebsite from "@/components/PacoWebsite";
 import Preloader from "@/components/Preloader";
 import SequenceBtn from "@/components/SequenceBtn";
 import ShowcaseCard from "@/components/ShowcaseCard";
@@ -24,7 +25,7 @@ import { TrashAnimation } from "@/components/trash-animation";
 
 const Home = () => {
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="">
       {/* <Card /> */}
       {/* // <FeatureSection /> */}
       {/* <CardsGrow /> */}
@@ -45,7 +46,8 @@ const Home = () => {
       {/* <FeedbackComponentCSS /> */}
       {/* <MultiStepComponent /> */}
       {/* <TrashAnimation /> */}
-      <Graph />
+      {/* <Graph /> */}
+      <PacoWebsite />
     </div>
   );
 }
