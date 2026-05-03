@@ -11,12 +11,14 @@ import FamilyDrawer from "@/components/FamilyDrawer";
 import FeatureSection from "@/components/FeatureSection";
 import FeedbackComponentCSS from "@/components/FeedbackModal";
 import FeedbackModal from "@/components/FeedbackModal";
+import GithubPage from "@/components/GithubPage";
 import Graph from "@/components/GraphAnimation";
 import HandGesture from "@/components/HandGesture";
 import StyledWithoutDrag from "@/components/LayIdTest";
 import MultiStepComponent from "@/components/MultiStepModal";
 import PacoWebsite from "@/components/PacoWebsite";
 import Preloader from "@/components/Preloader";
+import ReviewPage from "@/components/ReviewPage";
 import SequenceBtn from "@/components/SequenceBtn";
 import ShowcaseCard from "@/components/ShowcaseCard";
 import TextMorph from "@/components/TextMorph";
@@ -47,7 +49,9 @@ const Home = () => {
       {/* <MultiStepComponent /> */}
       {/* <TrashAnimation /> */}
       {/* <Graph /> */}
-      <PacoWebsite />
+      {/* <PacoWebsite /> */}
+      <ReviewPage />
+      {/* <GithubPage /> */}
     </div>
   );
 }
