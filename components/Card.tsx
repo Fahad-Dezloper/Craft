@@ -49,7 +49,7 @@ function CardContent() {
             <p className='text-neutral-600 mt-2 text-[10px]'>A collection of ui components</p>
             <div className='flex items-center  justify-center'>
                 <button className='flex items-center bg-white text-neutral-600 gap-1 text-[10px] mt-4 shadow-[0_1px_1px_rgba(0,0,0,0.05),0_4px_6px_rgba(34,42,53,0.04),0_24px_68px_rgba(47,48,55,0.05),0_2px_3px_rgba(0,0,0,0.04)] rounded-md px-2 py-1'>
-                    <img width={50} height={50} className='w-4 h-4' alt='logo' src='https://ui.aceternity.com/logo.png' />{" "}Aceternity
+                    {" "}Emil Paaji
                     <XIcon onClick={() => setOpen(false)} className="h-3 w-3 text-neutral-400" />
                 </button>
             </div>
@@ -70,11 +70,11 @@ function CardContent() {
                     ease: "easeInOut"
                 }}
                 className='absolute inset-0 w-full h-full bg-white border border-neutral-200 text-neutral-600 rounded-lg divide-y divide-neutral-200'>
-                    <div className='py-4 w-full text-center'>aceternity</div>
-                    <div className='py-4 w-full text-center'>aceternity</div>
-                    <div className='py-4 w-full text-center'>aceternity</div>
-                    <div className='py-4 w-full text-center'>aceternity</div>
-                    <div className='py-4 w-full text-center'>aceternity</div>
+                    <div className='py-4 w-full text-center'>Superteam</div>
+                    <div className='py-4 w-full text-center'>Superteam</div>
+                    <div className='py-4 w-full text-center'>Superteam</div>
+                    <div className='py-4 w-full text-center'>Superteam</div>
+                    <div className='py-4 w-full text-center'>Superteam</div>
                 </motion.div>
             </div>
         </motion.div> 

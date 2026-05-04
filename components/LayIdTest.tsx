@@ -254,6 +254,7 @@ export default function StyledWithoutDrag() {
   }, []);
 
   return (
+    <div className="w-screen h-screen flex items-center justify-center">
     <div className="relative my-0 flex h-[675px] w-full flex-col items-center justify-center">
       {CARDS.map((card) => (
         <Card key={card.title} card={card} setActiveCard={setActiveCard} />
@@ -273,6 +274,7 @@ export default function StyledWithoutDrag() {
           <ActiveCard activeCard={activeCard} setActiveCard={setActiveCard} />
         ) : null}
       </AnimatePresence>
+    </div>
     </div>
   );
 }

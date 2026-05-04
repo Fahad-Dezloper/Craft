@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 
 export default function PacoWebsite() {
   return (
-    <div className="orchestration">
+    <div className="orchestration text-white">
       <h1>Jon Doe</h1>
       {COPY.map((copy, index) => (
         <p

@@ -84,17 +84,18 @@ const features: Features[] = [
   },
 ]
 
-export default function FeatureSection() {
-    const backgrounds = ["#343434", "#00193b", "#05291c"]
+export default function FeatureSection({ container }: { container?: React.RefObject<any> }) {
+    const backgrounds = ["#343434", "#00193b", "#05291c", "#000000"]
     const [background, setBackground ] = useState(backgrounds[0]);
     const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
         target: ref,
+        container: container,
         offset: ["start end", "end start"]
       });
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        const finalValue = Math.floor(latest * backgrounds.length);
+        const finalValue = Math.min(Math.floor(latest * backgrounds.length), backgrounds.length - 1);
         setBackground(backgrounds[finalValue])
     });
   
@@ -107,17 +108,18 @@ export default function FeatureSection() {
     ref={ref} className='flex bg-neutral-900 justify-center items-center min-h-screen'>
       <div className='flex flex-col gap-10 py-40 max-w-4xl mx-auto'>
         {features.map((feature, idx) => (
-          <Card key={idx} feature={feature} />
+          <Card key={idx} feature={feature} container={container} />
         ))}
       </div>
     </motion.div>
   )
 }
 
-const Card = ({ feature }: { feature: Features }) => {
+const Card = ({ feature, container }: { feature: Features, container?: React.RefObject<any> }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
+    container: container,
     offset: ["start end", "end start"]
   });
 
@@ -143,3 +145,4 @@ const Card = ({ feature }: { feature: Features }) => {
     </motion.div>
   )
 }
+

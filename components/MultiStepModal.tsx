@@ -63,8 +63,9 @@ export default function MultiStepComponent() {
   }, [currentStep]);
 
   return (
+    <div className="flex items-center justify-center w-screen h-screen">
     <MotionConfig transition={{duration: 0.5, type: "spring", bounce: 0}}>
-    <motion.div animate={{height: bounds.height}} className="relative mx-auto my-[100px] w-[550px] overflow-hidden rounded-xl shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_2px_2px_rgba(0,0,0,0.04),0px_8px_8px_-8px_rgba(0,0,0,0.04)]">
+    <motion.div animate={{height: bounds.height}} className="relative mx-auto my-[100px] w-[550px] bg-white overflow-hidden rounded-xl shadow-[0_0_0_1px_rgba(0,0,0,0.08),0px_2px_2px_rgba(0,0,0,0.04),0px_8px_8px_-8px_rgba(0,0,0,0.04)]">
       <div className="p-6" ref={ref}>
         <AnimatePresence mode="popLayout" initial={false} custom={direction}>
         <motion.div
@@ -111,6 +112,7 @@ export default function MultiStepComponent() {
       </div>
     </motion.div>
     </MotionConfig>
+    </div>
   );
 }
 

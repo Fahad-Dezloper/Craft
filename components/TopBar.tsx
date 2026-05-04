@@ -3,6 +3,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 const TopBar = () => {
   return (
+    <div className="flex items-center justify-center w-screen h-screen">
     <NavigationMenu.Root className="root">
       <NavigationMenu.List className="menu-list">
         <NavigationMenu.Item>
@@ -13,7 +14,7 @@ const TopBar = () => {
             <ul className="list one">
               <li style={{ gridRow: "span 3" }}>
                 <NavigationMenu.Link asChild>
-                  <a className="callout" href="/">
+                  <a className="callout " href="/" >
                     <svg
                       width="24"
                       height="24"
@@ -95,6 +96,7 @@ const TopBar = () => {
         <NavigationMenu.Viewport className="viewport" />
       </div>
     </NavigationMenu.Root>
+    </div>
   );
 };
 
@@ -110,7 +112,7 @@ function ListItem({ className, children, title, ...props }: ListItemProps) {
     <li>
       <NavigationMenu.Link asChild>
         <a className={["list-item-link", className].filter(Boolean).join(" ")} {...props}>
-          <div className="list-item-heading">{title}</div>
+          <div className="list-item-heading ">{title}</div>
           <p className="list-item-text">{children}</p>
         </a>
       </NavigationMenu.Link>

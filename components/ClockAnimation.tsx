@@ -128,6 +128,7 @@ export default function ClockAnimation() {
   }
 
   return (
+        <div className="w-screen h-screen flex items-center justify-center">
     <svg
       width="155"
       height="143"
@@ -251,5 +252,6 @@ export default function ClockAnimation() {
         </filter>
       </defs>
     </svg>
+    </div>
   );
 }

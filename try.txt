@@ -1,3 +1,58 @@
-make components
+///
+- saare existing pages
+- authors connected with books
+- author page diffrent
+- search author, description, category
+- discount coupon codes
+- buy gift vouchers
+- store loyalty points = redeem as discount
+- request a book
+- customer support
+- in website order tracker
+- blogs
+- reviews
+- quick add functionality
+- google scroll of reviews
+- landing page
+- auto book shuffles
+- highlight pan india and across the world ( highlight on each product page )
+- store pickup
+- corporate section in website 
+-- Public Libraries setup
+-- existing clients and existing projects
+- instagram scroll in website
+- top 10 categories in home page ( we will tell )
 
-how u doin
+-- special emails for top customers
+
+///
+global so platform should be in all languages
+
+///////////
+- LOCAL POS connection ( for book quality add and deducted )
+- else excel setup
+- sales report
+- product by brand, product by category, out of stock products, low stock products
+- COD vs online
+- Stock out report
+- monthly revenue
+- sales by location
+- top customers
+- order summory (financial status, delivery status)
+- promotional email setups
+- email checkout page
+
+Global SEO
+Product page seo with OG images on all seo links
+
+
+everything should be ai powered and agentic
+
+Conversion rate optimization
+
+//
+shopify pos vs local pos
+
+
+
+

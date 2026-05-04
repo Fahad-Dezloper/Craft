@@ -26,6 +26,7 @@ export default function Graph() {
         clipPathSpring.set(percentageFromRight);
     }
   return (
+    <div className="flex w-screen h-screen items-center justify-center">
     <div
     className="w-full"
     onPointerMove={onPointerMove}
@@ -73,6 +74,7 @@ export default function Graph() {
           </linearGradient>
         </defs>
       </motion.svg>
+    </div>
     </div>
   );
 }

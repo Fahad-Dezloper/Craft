@@ -200,6 +200,7 @@ export default function HandGesture() {
     }
 
   return (
+    <div className="w-screen h-screen flex items-center justify-center">
     <svg
       width="125"
       height="119"
@@ -314,5 +315,6 @@ export default function HandGesture() {
         </filter>
       </defs>
     </svg>
+    </div>
   );
 }

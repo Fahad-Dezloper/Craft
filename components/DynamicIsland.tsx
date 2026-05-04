@@ -41,7 +41,7 @@ const DynamicIsland = () => {
       };
 
   return (
-    <div>
+    <div className='w-screen h-screen bg-[#1a1a1a] flex flex-col items-center justify-center'>
     <div className="flex h-[160px] justify-center">
       <motion.div 
       layout 
@@ -80,19 +80,6 @@ const DynamicIsland = () => {
       </motion.div>
 
     </div>
-    <div className="pointer-events-none absolute left-1/2 top-0 flex h-[200px] w-[300px] -translate-x-1/2 items-start justify-center">
-  <AnimatePresence mode="popLayout"  custom={ANIMATION_VARIANTS[variantKey]}>
-    // This shows only when exiting
-    <motion.div
-      initial={{ opacity: 0 }}
-      exit="exit"
-      variants={variants}
-      key={view}
-    >
-      {content}
-    </motion.div>
-  </AnimatePresence>
-  </div>
 
   <div className="flex w-full justify-center gap-4">
           {VIEWS.map((v) => (

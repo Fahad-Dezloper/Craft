@@ -45,7 +45,7 @@ export default function FeedbackComponentCSS() {
   }, [open, formState]);
 
   return (
-    <div className="flex h-[500px] w-full items-center justify-center">
+    <div className="flex w-screen h-screen items-center justify-center">
       <motion.button
         layoutId="popover-btn"
         onClick={() => {

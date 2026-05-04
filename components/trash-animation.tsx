@@ -36,6 +36,7 @@ export function TrashAnimation() {
   }, [removed]);
 
   return (
+    <div className="w-screen h-screen flex items-center justify-center">
     <MotionConfig transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}>
       <motion.div
         initial={false}
@@ -277,5 +278,6 @@ export function TrashAnimation() {
         </AnimatePresence>
       </motion.div>
     </MotionConfig>
+    </div>
   );
 }
