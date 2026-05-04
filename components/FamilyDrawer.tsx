@@ -29,13 +29,14 @@ const content = useMemo(() => {
   }, [view]);
 
 return (
-  <>
+  <div className="w-screen h-screen flex items-center justify-center relative ">
     <button
-      className="h-[44px] fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 px-6 rounded-full bg-white py-2 font-medium text-black border border-gray-200 transition-colors hover:bg-[#F9F9F8] focus-visible:shadow-focus-ring-button md:font-medium"
+      className="h-[44px] px-6 rounded-full bg-white py-2 font-medium text-black border border-gray-200 transition-colors hover:bg-[#F9F9F8] focus-visible:shadow-focus-ring-button md:font-medium"
       onClick={() => setIsOpen(true)}
     >
       Try it out
     </button>
+
       <Drawer.Root open={isOpen} onOpenChange={setIsOpen}>
         <Drawer.Portal>
         <Drawer.Overlay
@@ -62,6 +63,6 @@ return (
         </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>
-  </>
+  </div>
 );
 }

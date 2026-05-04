@@ -23,6 +23,7 @@ import ShowcaseCard from "@/components/ShowcaseCard";
 import TextMorph from "@/components/TextMorph";
 import TopBar from "@/components/TopBar";
 import { TrashAnimation } from "@/components/trash-animation";
+import FamilyDrawer from "@/components/FamilyDrawer";
 
 const COMPONENTS = [
   { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
@@ -42,6 +43,7 @@ const COMPONENTS = [
   { name: "Styled Layout", component: StyledWithoutDrag, bg: "#000000" },
   { name: "Feedback Component", component: FeedbackComponentCSS, bg: "#000000" },
   { name: "Multi Step Component", component: MultiStepComponent, bg: "#000000" },
+  { name: "Family Drawer", component: FamilyDrawer, bg: "#000000" },
   { name: "Trash Animation", component: TrashAnimation, bg: "#000000" },
   { name: "Graph", component: Graph, bg: "#000000" },
   { name: "Showcase Card", component: ShowcaseCard, bg: "#000000" },
