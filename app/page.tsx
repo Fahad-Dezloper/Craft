@@ -25,15 +25,15 @@ import TopBar from "@/components/TopBar";
 import { TrashAnimation } from "@/components/trash-animation";
 
 const COMPONENTS = [
+  { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
+  { name: "Animated Sales Card", component: AnimatedSalesCard, bg: "#E4DEDD" },
   { name: "Card", component: Card, bg: "#f9fafb" },
   { name: "Feature Section", component: FeatureSection, bg: "#171717" },
   // { name: "Cards Grow", component: CardsGrow, bg: "#f3f4f6" },
   // { name: "Sequence Button", component: SequenceBtn, bg: "#000000" },
+  // { name: "Paco Website", component: PacoWebsite, bg: "#000000" },
   { name: "Animated Text", component: AnimatedText, bg: "#000000" },
   // { name: "Preloader", component: Preloader, bg: "#FEFDF1" },
-  { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
-  { name: "Animated Sales Card", component: AnimatedSalesCard, bg: "#E4DEDD" },
-  { name: "Showcase Card", component: ShowcaseCard, bg: "#ffffff" },
   { name: "Dynamic Island", component: DynamicIsland, bg: "#000000" },
   { name: "Top Bar", component: TopBar, bg: "#000000" },
   { name: "Hand Gesture", component: HandGesture, bg: "#000000" },
@@ -44,7 +44,7 @@ const COMPONENTS = [
   { name: "Multi Step Component", component: MultiStepComponent, bg: "#000000" },
   { name: "Trash Animation", component: TrashAnimation, bg: "#000000" },
   { name: "Graph", component: Graph, bg: "#000000" },
-  { name: "Paco Website", component: PacoWebsite, bg: "#000000" },
+  { name: "Showcase Card", component: ShowcaseCard, bg: "#000000" },
 ];
 
 const Slide = ({ item, isActive }: { item: any, isActive: boolean }) => {
