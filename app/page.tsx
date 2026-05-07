@@ -24,6 +24,7 @@ import TextMorph from "@/components/TextMorph";
 import TopBar from "@/components/TopBar";
 import { TrashAnimation } from "@/components/trash-animation";
 import FamilyDrawer from "@/components/FamilyDrawer";
+import GooeyFilter from "./gooey/page";
 
 const COMPONENTS = [
   { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
@@ -41,15 +42,24 @@ const COMPONENTS = [
   { name: "Clock Animation", component: ClockAnimation, bg: "#000000" },
   // { name: "Text Morph", component: TextMorph, bg: "#000000" },
   { name: "Styled Layout", component: StyledWithoutDrag, bg: "#000000" },
-  { name: "Feedback Component", component: FeedbackComponentCSS, bg: "#000000" },
-  { name: "Multi Step Component", component: MultiStepComponent, bg: "#000000" },
+  {
+    name: "Feedback Component",
+    component: FeedbackComponentCSS,
+    bg: "#000000",
+  },
+  {
+    name: "Multi Step Component",
+    component: MultiStepComponent,
+    bg: "#000000",
+  },
   { name: "Family Drawer", component: FamilyDrawer, bg: "#000000" },
   { name: "Trash Animation", component: TrashAnimation, bg: "#000000" },
   { name: "Graph", component: Graph, bg: "#000000" },
   { name: "Showcase Card", component: ShowcaseCard, bg: "#000000" },
+  { name: "Gooey Filter", component: GooeyFilter, bg: "#ffffff" },
 ];
 
-const Slide = ({ item, isActive }: { item: any, isActive: boolean }) => {
+const Slide = ({ item, isActive }: { item: any; isActive: boolean }) => {
   const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -63,9 +73,9 @@ const Slide = ({ item, isActive }: { item: any, isActive: boolean }) => {
   }, [isActive]);
 
   return (
-    <div 
-      ref={containerRef} 
-      className="w-full h-full flex items-center justify-center overflow-auto"
+    <div
+      ref={containerRef}
+      className="flex h-full w-full items-center justify-center overflow-auto"
     >
       <AnimatePresence>
         {mounted && (
@@ -73,17 +83,15 @@ const Slide = ({ item, isActive }: { item: any, isActive: boolean }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="w-full h-full"
+            className="h-full w-full"
           >
             <item.component container={containerRef} />
           </motion.div>
-
         )}
       </AnimatePresence>
     </div>
   );
 };
-
 
 const Home = () => {
   const [index, setIndex] = useState(0);
@@ -107,26 +115,29 @@ const Home = () => {
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       className="h-screen w-screen overflow-hidden transition-colors duration-500"
       animate={{ backgroundColor: COMPONENTS[index]?.bg || "#000" }}
     >
       {/* Navigation Hint */}
       <div className="pointer-events-none fixed bottom-8 left-1/2 z-50 -translate-x-1/2 opacity-40 mix-blend-difference">
-        <p className="text-xs font-mono tracking-widest uppercase text-white">
-          Press <span className="px-1.5 py-0.5 bg-white/10 rounded border border-white/20">N</span> to advance • {index + 1} / {COMPONENTS.length}
+        <p className="font-mono text-xs tracking-widest text-white uppercase">
+          Press{" "}
+          <span className="rounded border border-white/20 bg-white/10 px-1.5 py-0.5">
+            N
+          </span>{" "}
+          to advance • {index + 1} / {COMPONENTS.length}
         </p>
       </div>
-
 
       <motion.div
         className="flex h-full w-full"
         animate={{ x: `-${index * 100}%` }}
-        transition={{ 
-          type: "spring", 
-          damping: 35, 
+        transition={{
+          type: "spring",
+          damping: 35,
           stiffness: 120,
-          mass: 1 
+          mass: 1,
         }}
       >
         {COMPONENTS.map((item, i) => (
@@ -143,6 +154,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
