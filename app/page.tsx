@@ -24,7 +24,7 @@ import TextMorph from "@/components/TextMorph";
 import TopBar from "@/components/TopBar";
 import { TrashAnimation } from "@/components/trash-animation";
 import FamilyDrawer from "@/components/FamilyDrawer";
-import GooeyFilter from "./gooey/page";
+import GooeyFilter from "@/components/GooeyFilter";
 
 const COMPONENTS = [
   { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
