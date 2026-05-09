@@ -42,3 +42,4 @@ next-env.d.ts
 public/Authors
 public/reviews
 components/ReviewPage.tsx
+index.html
