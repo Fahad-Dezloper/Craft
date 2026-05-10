@@ -25,6 +25,7 @@ import TopBar from "@/components/TopBar";
 import { TrashAnimation } from "@/components/trash-animation";
 import FamilyDrawer from "@/components/FamilyDrawer";
 import GooeyFilter from "@/components/GooeyFilter";
+import SmoothState from "@/components/SmoothnessState";
 
 const COMPONENTS = [
   { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
@@ -57,6 +58,7 @@ const COMPONENTS = [
   { name: "Graph", component: Graph, bg: "#000000" },
   { name: "Showcase Card", component: ShowcaseCard, bg: "#000000" },
   { name: "Gooey Filter", component: GooeyFilter, bg: "#ffffff" },
+  { name: "SmoothState", component: SmoothState, bg: "#ffffff" },
 ];
 
 const Slide = ({ item, isActive }: { item: any; isActive: boolean }) => {
