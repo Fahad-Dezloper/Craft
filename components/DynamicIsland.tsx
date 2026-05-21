@@ -85,7 +85,7 @@ const DynamicIsland = () => {
           {VIEWS.map((v) => (
             <button
               type="button"
-              className="rounded-full capitalize w-32 h-10 bg-white px-2.5 py-1.5 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300/50 hover:bg-gray-50"
+              className="rounded-full cursor-pointer capitalize w-32 h-10 bg-white px-2.5 py-1.5 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300/50 hover:bg-gray-50"
               onClick={() => {
                 setView(v);
                 setVariantKey(`${view}-${v}` as VariantKey);
