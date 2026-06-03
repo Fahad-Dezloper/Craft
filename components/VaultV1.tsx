@@ -7,7 +7,7 @@ const scaleVariant = {
   closed: { scale: 1, borderRadius: "0px", filter: "brightness(1)" },
 };
 
-export default function Page() {
+export default function Vault() {
   const [open, setOpen] = useState(false);
 
   return (
