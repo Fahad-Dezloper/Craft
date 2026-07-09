@@ -26,8 +26,10 @@ import { TrashAnimation } from "@/components/trash-animation";
 import FamilyDrawer from "@/components/FamilyDrawer";
 import GooeyFilter from "@/components/GooeyFilter";
 import SmoothState from "@/components/SmoothnessState";
+import Vault from "@/components/VaultV1";
 
 const COMPONENTS = [
+  { name: "Vault", component: Vault, bg: "#F4F5F7" },
   { name: "Earn Wave", component: EarnWave, bg: "#F4F5F7" },
   { name: "Animated Sales Card", component: AnimatedSalesCard, bg: "#E4DEDD" },
   { name: "Card", component: Card, bg: "#f9fafb" },

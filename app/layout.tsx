@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Signika } from "next/font/google";
+import { Inter, Signika, Geist } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +38,33 @@ const openRunde = localFont({
   display: "swap",
 });
 
+const chirp = localFont({
+  variable: "--font-twitter",
+  src: [
+    {
+      path: "../public/font/chirp/Chirp_Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/font/chirp/Chirp_Medium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/font/chirp/Chirp_Bold.woff",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/font/chirp/Chirp_Heavy.woff",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+});
+
 const signika = Signika({
   subsets: ["latin"],
   variable: "--font-signika",
@@ -51,9 +81,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body
-        className={`${inter.className} ${inter.variable} ${signika.variable} ${openRunde.variable} antialiased`}
+        className={`${inter.className} ${inter.variable} ${signika.variable} ${openRunde.variable} ${chirp.variable} antialiased`}
       >
         {children}
       </body>

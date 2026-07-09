@@ -1,15 +1,21 @@
-import Image from 'next/image'
-import React from 'react'
+import Image from "next/image";
+import React from "react";
 
 const ShowcaseCard = () => {
   return (
-    <div className='w-full h-full flex items-center justify-center'>
-        <div className='w-[30vw] h-[30vw] relative border-8 shadow-xl overflow-hidden rounded-[42px] '>
-          <div className='absolute inset-0 w-full h-full ' />
-            <Image src="/assets/Crab.jpg" alt="Crab image" width={400} height={400} className='w-full h-full object-cover' />
-        </div>
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="relative h-[30vw] w-[30vw] overflow-hidden rounded-[42px] border-8 shadow-xl">
+        <div className="absolute inset-0 h-full w-full" />
+        <Image
+          src="/assets/Crab.jpg"
+          alt="Crab image"
+          width={400}
+          height={400}
+          className="h-full w-full object-cover"
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShowcaseCard
+export default ShowcaseCard;

@@ -13,15 +13,16 @@ import {
 import clsx from "clsx";
 
 type ButtonProps = {
+  className?: String;
   children: ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-export function Button({ children, onClick }: ButtonProps) {
+export function Button({ className, children, onClick }: ButtonProps) {
   return (
     <button
       data-vaul-no-drag=""
-      className=" flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#F7F8F9] px-4 text-[17px] font-semibold text-[#222222] transition-transform focus:scale-95 focus-visible:shadow-focus-ring-button active:scale-95 md:font-medium"
+      className={`focus-visible:shadow-focus-ring-button flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#F7F8F9] px-4 text-[17px] font-semibold text-[#222222] transition-transform focus:scale-95 active:scale-95 md:font-medium ${className}!`}
       onClick={onClick}
     >
       {children}
@@ -35,13 +36,17 @@ type SecondaryButtonProps = {
   className?: string;
 };
 
-export function SecondaryButton({ children, onClick, className }: SecondaryButtonProps) {
+export function SecondaryButton({
+  children,
+  onClick,
+  className,
+}: SecondaryButtonProps) {
   return (
     <button
       data-vaul-no-drag=""
       className={clsx(
-        "flex h-12 w-full items-center justify-center gap-[15px] rounded-full text-center text-[19px] font-semibold transition-transform focus:scale-95 focus-visible:shadow-focus-ring-button active:scale-95 md:font-medium",
-        className,
+        "focus-visible:shadow-focus-ring-button flex h-12 w-full items-center justify-center gap-[15px] rounded-full text-center text-[19px] font-semibold transition-transform focus:scale-95 active:scale-95 md:font-medium",
+        className
       )}
       onClick={onClick}
     >
@@ -64,7 +69,7 @@ export function Header({ icon, title, description }: HeaderProps) {
         {title}
       </h2>
 
-      <p className="mt-3 text-[17px] font-medium leading-[24px] text-[#999999] md:font-normal">
+      <p className="mt-3 text-[17px] leading-[24px] font-medium text-[#999999] md:font-normal">
         {description}
       </p>
     </header>
@@ -216,7 +221,7 @@ export function DefaultView({ setView }: ViewSetterProps) {
           View Recovery Phase
         </Button>
         <button
-          className="flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#FFF0F0] px-4 text-[17px] font-semibold text-[#FF3F40] transition-transform focus:scale-95 focus-visible:shadow-focus-ring-button active:scale-95 md:font-medium"
+          className="focus-visible:shadow-focus-ring-button flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#FFF0F0] px-4 text-[17px] font-semibold text-[#FF3F40] transition-transform focus:scale-95 active:scale-95 md:font-medium"
           onClick={() => {
             setView("remove");
           }}
