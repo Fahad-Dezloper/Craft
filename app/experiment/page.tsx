@@ -4,6 +4,7 @@ import { Drawer } from "vaul";
 import useMeasure from "react-use-measure";
 import { motion, AnimatePresence } from "motion/react";
 import {
+  ChevronLeftt,
   CloseIcon,
   CloseIcon2,
   CrossIcon,
@@ -12,6 +13,8 @@ import {
 import { Button } from "@/components/shared/Component";
 import { WheelPicker, WheelPickerWrapper } from "@ncdai/react-wheel-picker";
 import "@ncdai/react-wheel-picker/style.css";
+import clsx from "clsx";
+import { Check } from "lucide-react";
 
 const impressionsOptions = [
   { impressions: "698 - 1.1K", price: "$1" },
@@ -33,7 +36,7 @@ const pickerOptions = impressionsOptions.map((opt) => ({
 }));
 
 const page = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [view, setView] = useState("default");
   const [elementRef, bounds] = useMeasure();
 
@@ -43,8 +46,10 @@ const page = () => {
         return <Header setView={setView} />;
       // <DefaultView setView={setView} />
       case "pay":
-        return <div />;
+        return <Pay setView={setView} />;
       // <RemoveWallet setView={setView} />
+      case "success":
+        return <div />;
     }
   }, [view]);
 
@@ -76,7 +81,7 @@ const page = () => {
               {/* <Drawer.Close asChild>
                 <button
                   data-vaul-no-drag=""
-                  className="focus-visible:shadow-focus-ring-button absolute top-7 right-8 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#F7F8F9] text-[#949595] transition-transform focus:scale-95 active:scale-75"
+                  className="focus-visible:shadow-focus-ring-button absolute top-7 right-8 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#F7F8F9] text-[#858686] transition-transform focus:scale-95 active:scale-75"
                 >
                   <CloseIcon />
                 </button>
@@ -109,7 +114,7 @@ const Twitter = () => {
   );
 };
 
-const Header = ({ setView }) => {
+const Header = ({ setView }: { setView: (view: string) => void }) => {
   return (
     <>
       <header className="relative mb-4 flex h-[72px] items-center justify-between border-b border-[#F7F7F7] px-2">
@@ -143,7 +148,7 @@ const Header = ({ setView }) => {
               optionItemHeight={48}
               visibleCount={12}
               classNames={{
-                optionItem: "text-[#949595] font-medium",
+                optionItem: "text-[#858686] font-medium",
                 highlightItem: "text-[#222222] font-semibold",
                 highlightWrapper: "bg-[#F4F5F7] rounded-[20px]",
               }}
@@ -151,50 +156,51 @@ const Header = ({ setView }) => {
           </WheelPickerWrapper>
         </div>
         <Button
-          onClick={() => {
-            setView("key");
-          }}
+          // onClick={() => {
+          //   setView("key");
+          // }}
           className={
-            "flex h-10! items-center justify-between text-sm! text-[#6e6d6d]"
+            "flex h-10! items-center justify-between text-sm! font-medium! text-[#858686]"
           }
         >
           Region
           <span className="flex items-center gap-1.5 text-sm text-black">
             California
-            <Arrow color="#6e6d6d" width={18} height={18} />
+            <Arrow color="#858686" width={18} height={18} />
           </span>
         </Button>
         <Button
           onClick={() => {
-            setView("phrase");
+            setView("pay");
           }}
           className={
-            "flex h-10! items-center justify-between text-sm! text-[#6e6d6d]"
+            "flex h-10! items-center justify-between text-sm! font-medium! text-[#858686]"
           }
         >
-          {/* <PhraseIcon /> */}
           Pay with
           <span className="flex items-center gap-1.5 text-sm text-black">
             <Apple color="#000000" width={18} height={18} />
             Apple
-            <Arrow color="#6e6d6d" width={18} height={18} />
+            <Arrow color="#858686" width={18} height={18} />
           </span>
         </Button>
 
-        <p className="flex flex-col items-center justify-center pt-2.5 pb-2 text-[10px] text-[#949595]">
+        <p className="flex flex-col items-center justify-center pt-2.5 pb-2 text-[10px] text-[#858686]">
           By clicking the Boost Post button below, you agree to our
           <button className="underline">Terms and Condition</button>
         </p>
 
-        <button
-          className="focus-visible:shadow-focus-ring-button flex h-12 w-full items-center justify-center gap-[15px] rounded-full bg-black px-4 text-center text-[17px] font-medium text-white transition-transform focus:scale-95 active:scale-95 md:font-medium"
-          onClick={() => {
-            setView("remove");
-          }}
-        >
-          {/* <WarningIcon /> */}
-          Boost Post
-        </button>
+        <Drawer.Close asChild>
+          <button
+            className="focus-visible:shadow-focus-ring-button flex h-12 w-full items-center justify-center gap-[15px] rounded-full bg-black px-4 text-center text-[17px] font-medium text-white transition-transform focus:scale-95 active:scale-95 md:font-medium"
+            // onClick={() => {
+            //   setView("success");
+            // }}
+          >
+            {/* <WarningIcon /> */}
+            Boost Post
+          </button>
+        </Drawer.Close>
       </div>
     </>
   );
@@ -252,5 +258,54 @@ const Apple = ({
         d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
       />
     </svg>
+  );
+};
+
+const Pay = ({ setView }: { setView: (view: string) => void }) => {
+  return (
+    <>
+      <header className="relative mb-4 flex h-[72px] items-center justify-between border-b border-[#F7F7F7] px-2">
+        <button
+          onClick={() => {
+            setView("default");
+          }}
+          className="flex cursor-pointer items-center justify-center outline-none"
+        >
+          <ChevronLeftt className={""} />
+        </button>
+        <h2 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-base font-semibold text-[#222222] md:font-medium">
+          Pay with
+        </h2>
+      </header>
+      <div className="mt-2 flex flex-col gap-1 px-2">
+        <button
+          onClick={() => {
+            setView("default");
+          }}
+          className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black outline-none"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex w-6 items-center justify-center">
+              <Apple width={24} height={24} color="#000000" />
+            </div>
+            Pay with Apple
+          </div>
+          <Check className="h-4 w-4 text-black" strokeWidth={2.5} />
+        </button>
+        <button
+          onClick={() => {
+            setView("default");
+          }}
+          className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black outline-none"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex w-6 items-center justify-center">
+              <Twitter />
+            </div>
+            Pay with X Money
+          </div>
+        </button>
+      </div>
+    </>
   );
 };
