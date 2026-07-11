@@ -1,4 +1,12 @@
+add success animation screen
 
+clean up code
+
+make sure frames are correctly working
+
+60fps
+
+circle lining completing in success state for clean ux
 
 
 

@@ -1,19 +1,12 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Drawer } from "vaul";
 import useMeasure from "react-use-measure";
-import { motion, AnimatePresence } from "motion/react";
-import {
-  ChevronLeftt,
-  CloseIcon,
-  CloseIcon2,
-  CrossIcon,
-  QuestionMarkIcon,
-} from "@/lib/icons";
+import { motion } from "motion/react";
+import { ChevronLeftt, CloseIcon2, QuestionMarkIcon } from "@/lib/icons";
 import { Button } from "@/components/shared/Component";
 import { WheelPicker, WheelPickerWrapper } from "@ncdai/react-wheel-picker";
 import "@ncdai/react-wheel-picker/style.css";
-import clsx from "clsx";
 import { Check } from "lucide-react";
 
 const impressionsOptions = [
@@ -38,23 +31,30 @@ const pickerOptions = impressionsOptions.map((opt) => ({
 const page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [view, setView] = useState("default");
+  const [paymentMethod, setPaymentMethod] = useState("Apple");
   const [elementRef, bounds] = useMeasure();
 
   const content = useMemo(() => {
     switch (view) {
       case "default":
-        return <Header setView={setView} />;
+        return <Header setView={setView} paymentMethod={paymentMethod} />;
       // <DefaultView setView={setView} />
       case "pay":
-        return <Pay setView={setView} />;
+        return (
+          <Pay
+            setView={setView}
+            paymentMethod={paymentMethod}
+            setPaymentMethod={setPaymentMethod}
+          />
+        );
       // <RemoveWallet setView={setView} />
       case "success":
         return <div />;
     }
-  }, [view]);
+  }, [view, paymentMethod]);
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
+    <div className="flex h-screen w-screen items-center justify-center bg-white">
       <button
         onClick={() => setIsOpen(true)}
         className="font-twitter flex cursor-pointer items-center justify-center gap-1.5 rounded-4xl bg-black px-6 py-2 text-lg font-semibold text-white"
@@ -76,8 +76,15 @@ const page = () => {
             className="fixed inset-0 z-10 bg-black/30"
             onClick={() => setIsOpen(false)}
           />
-          <Drawer.Content className="fixed inset-x-4 bottom-4 z-10 mx-auto max-w-[361px] overflow-hidden rounded-[36px] bg-[#FEFFFE] outline-hidden md:mx-auto md:w-full md:max-w-[441px]">
-            <motion.div animate={{ height: bounds.height }}>
+          <Drawer.Content className="fixed inset-x-3 bottom-4 z-10 mx-auto overflow-hidden rounded-t-[36px] rounded-b-[48px] bg-[#FEFFFE] outline-hidden md:mx-auto md:w-full md:max-w-[441px]">
+            <motion.div
+              animate={{ height: bounds.height }}
+              transition={{ type: "spring", bounce: 0.22, duration: 0.6 }}
+              style={{
+                willChange: "height, transform",
+                transform: "translateZ(0)",
+              }}
+            >
               {/* <Drawer.Close asChild>
                 <button
                   data-vaul-no-drag=""
@@ -88,9 +95,17 @@ const page = () => {
               </Drawer.Close> */}
               <div
                 ref={elementRef}
-                className="font-twitter px-6 pt-2.5 pb-6 antialiased"
+                className="font-twitter px-4 pb-6 antialiased"
               >
-                {content}
+                <motion.div
+                  key={view}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                  style={{ willChange: "opacity", transform: "translateZ(0)" }}
+                >
+                  {content}
+                </motion.div>
               </div>
             </motion.div>
           </Drawer.Content>
@@ -102,11 +117,15 @@ const page = () => {
 
 export default page;
 
-const Twitter = () => {
+const Twitter = ({
+  className = "h-5 w-5 fill-current",
+}: {
+  className?: string;
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-5 w-5 fill-current"
+      className={className}
       viewBox="0 0 640 640"
     >
       <path d="M453.2 112L523.8 112L369.6 288.2L551 528L409 528L297.7 382.6L170.5 528L99.8 528L264.7 339.5L90.8 112L236.4 112L336.9 244.9L453.2 112zM428.4 485.8L467.5 485.8L215.1 152L173.1 152L428.4 485.8z" />
@@ -114,10 +133,16 @@ const Twitter = () => {
   );
 };
 
-const Header = ({ setView }: { setView: (view: string) => void }) => {
+const Header = ({
+  setView,
+  paymentMethod,
+}: {
+  setView: (view: string) => void;
+  paymentMethod: string;
+}) => {
   return (
     <>
-      <header className="relative mb-4 flex h-[72px] items-center justify-between border-b border-[#F7F7F7] px-2">
+      <header className="relative mt-2 mb-4 flex h-[55px] items-center justify-between border-b border-[#F7F7F7] px-2">
         <Drawer.Close asChild>
           <button className="flex cursor-pointer items-center justify-center outline-none">
             <CloseIcon2 className="" />
@@ -150,7 +175,7 @@ const Header = ({ setView }: { setView: (view: string) => void }) => {
               classNames={{
                 optionItem: "text-[#858686] font-medium",
                 highlightItem: "text-[#222222] font-semibold",
-                highlightWrapper: "bg-[#F4F5F7] rounded-[20px]",
+                highlightWrapper: "bg-[#E7E7E7] rounded-[20px]",
               }}
             />
           </WheelPickerWrapper>
@@ -160,11 +185,11 @@ const Header = ({ setView }: { setView: (view: string) => void }) => {
           //   setView("key");
           // }}
           className={
-            "flex h-10! items-center justify-between text-sm! font-medium! text-[#858686]"
+            "flex h-10! items-center justify-between bg-[#E7E7E7]! text-sm! font-medium! text-[#858686]"
           }
         >
           Region
-          <span className="flex items-center gap-1.5 text-sm text-black">
+          <span className="flex items-center gap-1.5 text-sm font-semibold text-black">
             California
             <Arrow color="#858686" width={18} height={18} />
           </span>
@@ -174,13 +199,22 @@ const Header = ({ setView }: { setView: (view: string) => void }) => {
             setView("pay");
           }}
           className={
-            "flex h-10! items-center justify-between text-sm! font-medium! text-[#858686]"
+            "flex h-10! items-center justify-between bg-[#E7E7E7]! text-sm! font-medium! text-[#858686]"
           }
         >
           Pay with
-          <span className="flex items-center gap-1.5 text-sm text-black">
-            <Apple color="#000000" width={18} height={18} />
-            Apple
+          <span className="flex items-center gap-1.5 text-sm font-semibold text-black">
+            {paymentMethod === "Apple" ? (
+              <>
+                <Apple color="#000000" width={18} height={18} />
+                Apple
+              </>
+            ) : (
+              <>
+                <Twitter className="h-[18px] w-[18px] fill-current" />
+                Money
+              </>
+            )}
             <Arrow color="#858686" width={18} height={18} />
           </span>
         </Button>
@@ -261,7 +295,15 @@ const Apple = ({
   );
 };
 
-const Pay = ({ setView }: { setView: (view: string) => void }) => {
+const Pay = ({
+  setView,
+  paymentMethod,
+  setPaymentMethod,
+}: {
+  setView: (view: string) => void;
+  paymentMethod: string;
+  setPaymentMethod: (method: string) => void;
+}) => {
   return (
     <>
       <header className="relative mb-4 flex h-[72px] items-center justify-between border-b border-[#F7F7F7] px-2">
@@ -280,6 +322,7 @@ const Pay = ({ setView }: { setView: (view: string) => void }) => {
       <div className="mt-2 flex flex-col gap-1 px-2">
         <button
           onClick={() => {
+            setPaymentMethod("Apple");
             setView("default");
           }}
           className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black outline-none"
@@ -290,10 +333,13 @@ const Pay = ({ setView }: { setView: (view: string) => void }) => {
             </div>
             Pay with Apple
           </div>
-          <Check className="h-4 w-4 text-black" strokeWidth={2.5} />
+          {paymentMethod === "Apple" && (
+            <Check className="h-4 w-4 text-black" strokeWidth={2.5} />
+          )}
         </button>
         <button
           onClick={() => {
+            setPaymentMethod("X Money");
             setView("default");
           }}
           className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black outline-none"
@@ -304,6 +350,9 @@ const Pay = ({ setView }: { setView: (view: string) => void }) => {
             </div>
             Pay with X Money
           </div>
+          {paymentMethod === "X Money" && (
+            <Check className="h-4 w-4 text-black" strokeWidth={2.5} />
+          )}
         </button>
       </div>
     </>
