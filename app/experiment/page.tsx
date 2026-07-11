@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import { Drawer } from "vaul";
 import useMeasure from "react-use-measure";
-import { motion } from "motion/react";
+import { motion, useAnimate, AnimatePresence } from "motion/react";
 import { ChevronLeftt, CloseIcon2, QuestionMarkIcon } from "@/lib/icons";
 import { Button } from "@/components/shared/Component";
 import { WheelPicker, WheelPickerWrapper } from "@ncdai/react-wheel-picker";
@@ -57,7 +57,7 @@ const page = () => {
     <div className="flex h-screen w-screen items-center justify-center bg-white">
       <button
         onClick={() => setIsOpen(true)}
-        className="font-twitter flex cursor-pointer items-center justify-center gap-1.5 rounded-4xl bg-black px-6 py-2 text-lg font-semibold text-white"
+        className="font-twitter flex cursor-pointer items-center justify-center gap-1.5 rounded-4xl bg-black px-6 py-2 text-lg font-semibold text-white transition-transform active:scale-[0.97]"
       >
         <svg
           viewBox="0 0 24 24"
@@ -85,14 +85,6 @@ const page = () => {
                 transform: "translateZ(0)",
               }}
             >
-              {/* <Drawer.Close asChild>
-                <button
-                  data-vaul-no-drag=""
-                  className="focus-visible:shadow-focus-ring-button absolute top-7 right-8 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-[#F7F8F9] text-[#858686] transition-transform focus:scale-95 active:scale-75"
-                >
-                  <CloseIcon />
-                </button>
-              </Drawer.Close> */}
               <div
                 ref={elementRef}
                 className="font-twitter px-4 pb-6 antialiased"
@@ -180,12 +172,9 @@ const Header = ({
             />
           </WheelPickerWrapper>
         </div>
-        <Button
-          // onClick={() => {
-          //   setView("key");
-          // }}
+        <div
           className={
-            "flex h-10! items-center justify-between bg-[#E7E7E7]! text-sm! font-medium! text-[#858686]"
+            "flex h-10 w-full items-center justify-between rounded-[16px] bg-[#E7E7E7] px-4 text-sm font-medium text-[#858686]"
           }
         >
           Region
@@ -193,9 +182,10 @@ const Header = ({
             California
             <Arrow color="#858686" width={18} height={18} />
           </span>
-        </Button>
+        </div>
         <Button
-          onClick={() => {
+          onClick={async () => {
+            await new Promise((resolve) => setTimeout(resolve, 150));
             setView("pay");
           }}
           className={
@@ -224,17 +214,43 @@ const Header = ({
           <button className="underline">Terms and Condition</button>
         </p>
 
-        <Drawer.Close asChild>
-          <button
-            className="focus-visible:shadow-focus-ring-button flex h-12 w-full items-center justify-center gap-[15px] rounded-full bg-black px-4 text-center text-[17px] font-medium text-white transition-transform focus:scale-95 active:scale-95 md:font-medium"
-            // onClick={() => {
-            //   setView("success");
-            // }}
-          >
-            {/* <WarningIcon /> */}
-            Boost Post
-          </button>
-        </Drawer.Close>
+        <AnimatedButton
+          className="focus-visible:shadow-focus-ring-button flex h-12 w-full cursor-pointer items-center justify-center gap-[15px] rounded-full bg-black px-4 text-center text-[17px] font-medium text-white transition-transform focus:scale-[0.97] active:scale-[0.97] md:font-medium"
+          onClick={async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1500));
+            // setView("success");
+          }}
+        >
+          {(isSuccess) => (
+            <div className="flex items-center">
+              <span>Boost</span>
+              <motion.span
+                initial={false}
+                animate={{
+                  width: isSuccess ? 0 : "auto",
+                  opacity: isSuccess ? 0 : 1,
+                  filter: isSuccess ? "blur(4px)" : "blur(0px)",
+                }}
+                className="overflow-hidden whitespace-nowrap"
+                transition={{ duration: 0.3 }}
+              >
+                &nbsp;Post
+              </motion.span>
+              <motion.span
+                initial={false}
+                animate={{
+                  width: isSuccess ? "auto" : 0,
+                  opacity: isSuccess ? 1 : 0,
+                  filter: isSuccess ? "blur(0px)" : "blur(4px)",
+                }}
+                className="overflow-hidden whitespace-nowrap"
+                transition={{ duration: 0.3 }}
+              >
+                ed
+              </motion.span>
+            </div>
+          )}
+        </AnimatedButton>
       </div>
     </>
   );
@@ -308,10 +324,11 @@ const Pay = ({
     <>
       <header className="relative mb-4 flex h-[72px] items-center justify-between border-b border-[#F7F7F7] px-2">
         <button
-          onClick={() => {
+          onClick={async () => {
+            await new Promise((resolve) => setTimeout(resolve, 150));
             setView("default");
           }}
-          className="flex cursor-pointer items-center justify-center outline-none"
+          className="flex cursor-pointer items-center justify-center transition-transform outline-none active:scale-[0.97]"
         >
           <ChevronLeftt className={""} />
         </button>
@@ -321,11 +338,12 @@ const Pay = ({
       </header>
       <div className="mt-2 flex flex-col gap-1 px-2">
         <button
-          onClick={() => {
+          onClick={async () => {
+            await new Promise((resolve) => setTimeout(resolve, 150));
             setPaymentMethod("Apple");
             setView("default");
           }}
-          className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black outline-none"
+          className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black transition-transform outline-none active:scale-[0.97]"
         >
           <div className="flex items-center gap-3">
             <div className="flex w-6 items-center justify-center">
@@ -338,11 +356,12 @@ const Pay = ({
           )}
         </button>
         <button
-          onClick={() => {
+          onClick={async () => {
+            await new Promise((resolve) => setTimeout(resolve, 150));
             setPaymentMethod("X Money");
             setView("default");
           }}
-          className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black outline-none"
+          className="flex w-full cursor-pointer items-center justify-between bg-transparent py-2 text-[17px] font-medium text-black transition-transform outline-none active:scale-[0.97]"
         >
           <div className="flex items-center gap-3">
             <div className="flex w-6 items-center justify-center">
@@ -356,5 +375,179 @@ const Pay = ({
         </button>
       </div>
     </>
+  );
+};
+
+type AnimatedButtonProps = Omit<
+  React.ComponentProps<typeof motion.button>,
+  "children"
+> & {
+  successText?: React.ReactNode;
+  children?: React.ReactNode | ((isSuccess: boolean) => React.ReactNode);
+};
+
+const AnimatedButton = ({
+  className,
+  children,
+  successText,
+  ...props
+}: AnimatedButtonProps) => {
+  const [scope, animate] = useAnimate();
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const animateLoading = async () => {
+    await animate(
+      ".loader",
+      {
+        width: "20px",
+        scale: 1,
+        display: "block",
+      },
+      {
+        duration: 0.2,
+      }
+    );
+  };
+
+  const animateSuccess = async () => {
+    setIsSuccess(true);
+    await Promise.all([
+      animate(
+        ".loader",
+        {
+          width: "0px",
+          scale: 0,
+          display: "none",
+        },
+        {
+          duration: 0.2,
+        }
+      ),
+      animate(
+        ".check-animated",
+        {
+          width: "20px",
+          scale: 1,
+          display: "block",
+        },
+        {
+          duration: 0.2,
+        }
+      ),
+    ]);
+
+    await animate(
+      ".check-animated",
+      {
+        width: "0px",
+        scale: 0,
+        display: "none",
+      },
+      {
+        delay: 2,
+        duration: 0.2,
+      }
+    );
+    setIsSuccess(false);
+  };
+
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    await animateLoading();
+    if (props.onClick) {
+      await props.onClick(event as any);
+    }
+    await animateSuccess();
+  };
+
+  const { onClick, ...buttonProps } = props;
+
+  return (
+    <motion.button
+      layout
+      layoutId="button"
+      ref={scope}
+      className={className}
+      {...buttonProps}
+      onClick={handleClick}
+    >
+      <motion.div layout className="flex items-center gap-2">
+        <Loader />
+        <AnimatedCheckIcon />
+        <motion.div layout className="flex">
+          {typeof children === "function"
+            ? children(isSuccess)
+            : isSuccess && successText
+              ? successText
+              : children}
+        </motion.div>
+      </motion.div>
+    </motion.button>
+  );
+};
+
+const Loader = () => {
+  return (
+    <motion.svg
+      animate={{
+        rotate: [0, 360],
+      }}
+      initial={{
+        scale: 0,
+        width: 0,
+        display: "none",
+      }}
+      style={{
+        scale: 0.5,
+        display: "none",
+      }}
+      transition={{
+        duration: 0.3,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="loader text-white"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3a9 9 0 1 0 9 9" />
+    </motion.svg>
+  );
+};
+
+const AnimatedCheckIcon = () => {
+  return (
+    <motion.svg
+      initial={{
+        scale: 0,
+        width: 0,
+        display: "none",
+      }}
+      style={{
+        scale: 0.5,
+        display: "none",
+      }}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="check-animated text-white"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      <path d="M9 12l2 2l4 -4" />
+    </motion.svg>
   );
 };

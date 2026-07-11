@@ -22,7 +22,7 @@ export function Button({ className, children, onClick }: ButtonProps) {
   return (
     <button
       data-vaul-no-drag=""
-      className={`focus-visible:shadow-focus-ring-button flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#F7F8F9] px-4 text-[17px] font-semibold text-[#222222] transition-transform focus:scale-95 active:scale-95 md:font-medium ${className}`}
+      className={`focus-visible:shadow-focus-ring-button flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#F7F8F9] px-4 text-[17px] font-semibold text-[#222222] transition-transform focus:scale-[0.97] active:scale-[0.97] md:font-medium ${className}`}
       onClick={onClick}
     >
       {children}
@@ -45,7 +45,7 @@ export function SecondaryButton({
     <button
       data-vaul-no-drag=""
       className={clsx(
-        "focus-visible:shadow-focus-ring-button flex h-12 w-full items-center justify-center gap-[15px] rounded-full text-center text-[19px] font-semibold transition-transform focus:scale-95 active:scale-95 md:font-medium",
+        "focus-visible:shadow-focus-ring-button flex h-12 w-full items-center justify-center gap-[15px] rounded-full text-center text-[19px] font-semibold transition-transform focus:scale-[0.97] active:scale-[0.97] md:font-medium",
         className
       )}
       onClick={onClick}
@@ -221,7 +221,7 @@ export function DefaultView({ setView }: ViewSetterProps) {
           View Recovery Phase
         </Button>
         <button
-          className="focus-visible:shadow-focus-ring-button flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#FFF0F0] px-4 text-[17px] font-semibold text-[#FF3F40] transition-transform focus:scale-95 active:scale-95 md:font-medium"
+          className="focus-visible:shadow-focus-ring-button flex h-12 w-full items-center gap-[15px] rounded-[16px] bg-[#FFF0F0] px-4 text-[17px] font-semibold text-[#FF3F40] transition-transform focus:scale-[0.97] active:scale-[0.97] md:font-medium"
           onClick={() => {
             setView("remove");
           }}
